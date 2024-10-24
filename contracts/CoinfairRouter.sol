@@ -446,7 +446,7 @@ library CoinfairLibrary {
                 hex'ff',
                 factory,
                 keccak256(abi.encodePacked(token0, token1, poolType, fee)),
-                hex'39b9b44c1a7f7740127bbbcbc906120a098548a37c07ba245de10d0c5fc78423' // init code hash
+                hex'5817665895d407125beabddfbb6ee901daaafc894af957ea37be38a3be3ef445' // init code hash
             ))));
     }
 
