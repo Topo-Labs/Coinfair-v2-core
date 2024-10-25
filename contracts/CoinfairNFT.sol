@@ -132,19 +132,29 @@ contract CoinfairNFT is ERC721, Ownable{
     }
 
     function setL1Uri(string memory newUri) public onlyCoinfair {
-        require(newUri != l2Uri && newUri != l3Uri);
+        require(
+            keccak256(bytes(newUri)) != keccak256(bytes(l2Uri)) &&
+            keccak256(bytes(newUri)) != keccak256(bytes(l3Uri))
+        );
         l1Uri = newUri;
     }
 
     function setL2Uri(string memory newUri) public onlyCoinfair {
-        require(newUri != l1Uri && newUri != l3Uri);
+        require(
+            keccak256(bytes(newUri)) != keccak256(bytes(l1Uri)) &&
+            keccak256(bytes(newUri)) != keccak256(bytes(l3Uri))
+        );
         l2Uri = newUri;
     }
 
     function setL3Uri(string memory newUri) public onlyCoinfair {
-        require(newUri != l1Uri && newUri != l2Uri);
+        require(
+            keccak256(bytes(newUri)) != keccak256(bytes(l1Uri)) &&
+            keccak256(bytes(newUri)) != keccak256(bytes(l2Uri))
+        );
         l3Uri = newUri;
     }
+
 
     function setMintCost(uint256 newCost) public onlyCoinfair {
         mintCost = newCost;

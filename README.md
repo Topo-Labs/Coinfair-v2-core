@@ -4,9 +4,9 @@
 
 A New Generation DEX Leading Crypto Trading. 
 
-Official:   [https://linktr.ee/Coinfair_Global](https://t.co/hhsIVrD2TY)
+Official: [https://linktr.ee/Coinfair_Global](https://t.co/hhsIVrD2TY)
 
-Swap:      https://coinfair.xyz
+Swap: https://coinfair.xyz
 
 ## Contract Address
 
