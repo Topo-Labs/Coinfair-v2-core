@@ -446,7 +446,7 @@ library CoinfairLibrary {
                 hex'ff',
                 factory,
                 keccak256(abi.encodePacked(token0, token1, poolType, fee)),
-                hex'5817665895d407125beabddfbb6ee901daaafc894af957ea37be38a3be3ef445' // init code hash
+                hex'4033205ecf07ac298f1fa57534ce414e1812664b4e71735477e7603edb6bfddf' // init code hash
             ))));
     }
 
@@ -658,6 +658,8 @@ contract CoinfairWarmRouter is ICoinfairWarmRouter {
         _;
     }
 
+    event AddLiquidity(address tokenA, address tokenB, uint256 exponentA, uint256 exponentB, address indexed pair, address indexed owner);
+
     constructor(address _factory) public {
         require(_factory != address(0));
         factory = _factory;
@@ -722,6 +724,8 @@ contract CoinfairWarmRouter is ICoinfairWarmRouter {
                 ICoinfairFactory(factory).createPair(tokenA, tokenB, exponentA, exponentB, _fee),
                 msg.sender);
         }
+
+        emit AddLiquidity(tokenA, tokenB, exponentA, exponentB, ICoinfairFactory(factory).getPair(tokenA, tokenB, poolType, _fee), msg.sender);
 
         (reserveA, reserveB) = CoinfairLibrary.getReserves(factory, tokenA, tokenB, poolType, _fee);
     }
