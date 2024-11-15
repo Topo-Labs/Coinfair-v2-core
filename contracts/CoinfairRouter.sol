@@ -658,8 +658,6 @@ contract CoinfairWarmRouter is ICoinfairWarmRouter {
         _;
     }
 
-    event AddLiquidity(address tokenA, address tokenB, uint256 exponentA, uint256 exponentB, address indexed pair, address indexed owner);
-
     constructor(address _factory) public {
         require(_factory != address(0));
         factory = _factory;
@@ -724,8 +722,6 @@ contract CoinfairWarmRouter is ICoinfairWarmRouter {
                 ICoinfairFactory(factory).createPair(tokenA, tokenB, exponentA, exponentB, _fee),
                 msg.sender);
         }
-
-        emit AddLiquidity(tokenA, tokenB, exponentA, exponentB, ICoinfairFactory(factory).getPair(tokenA, tokenB, poolType, _fee), msg.sender);
 
         (reserveA, reserveB) = CoinfairLibrary.getReserves(factory, tokenA, tokenB, poolType, _fee);
     }
